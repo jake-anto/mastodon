@@ -60,8 +60,8 @@ class AccountStatusesFilter
       .where(reblog_of_id: nil)
       .or(
         scope
+          .where(reblog: { accounts: { domain: nil } }).or(scope.where.not(reblog: { accounts: { domain: current_account.excluded_from_timeline_domains } }))
           .where.not(reblog: { account_id: current_account.excluded_from_timeline_account_ids })
-          .where.not(reblog: { accounts: { domain: current_account.excluded_from_timeline_domains } })
       )
   end
 
