@@ -90,4 +90,9 @@ class ManifestSerializer < ActiveModel::Serializer
       },
     ]
   end
+
+  def prefer_related_applications
+    true
+  end
+
 end
